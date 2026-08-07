@@ -16,11 +16,12 @@ return {
       'rust', 'go', 'c_sharp', 'python', 'bash', 'markdown', 'markdown_inline'
     })
 
-    -- 3. Enable highlighting natively
+    -- 3. Enable highlighting safely across filetypes
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { '*' },
       callback = function()
-        vim.treesitter.start()
+        -- pcall silently catches errors if a buffer (like TelescopePrompt) has no parser
+        pcall(vim.treesitter.start)
       end,
     })
   end
