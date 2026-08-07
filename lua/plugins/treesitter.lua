@@ -10,13 +10,13 @@ return {
       install_dir = vim.fn.stdpath('data') .. '/site'
     })
 
-    -- 2. Install your parsers (runs asynchronously)
+    -- 2. Install parsers
     require('nvim-treesitter').install({
       'c', 'cpp', 'glsl', 'lua', 'nix', 
-      'rust', 'go', 'c_sharp', 'python', 'bash', 'markdown'
+      'rust', 'go', 'c_sharp', 'python', 'bash', 'markdown', 'markdown_inline'
     })
 
-    -- 3. Enable highlighting globally via Neovim's built-in FileType autocommand
+    -- 3. Enable highlighting natively
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { '*' },
       callback = function()
