@@ -1,7 +1,5 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-
-    lazy = false,
     build = ":TSUpdate",
 
     config = function()
@@ -9,9 +7,8 @@ return {
 
         require("nvim-treesitter").install({
             "lua",
-            "vim",
-            "cpp",
             "nix",
+            "vim",
             "vimdoc",
             "query",
             "bash",
@@ -23,15 +20,6 @@ return {
             "json",
             "markdown",
             "markdown_inline",
-        })
-
-        vim.api.nvim_create_autocmd("FileType", {
-            callback = function()
-                vim.treesitter.start()
-                vim.wo.foldmethod = "expr"
-                vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            end,
         })
     end,
 }
