@@ -1,25 +1,36 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
 
-    config = function()
-        require("nvim-treesitter").setup()
+  config = function()
+      require("nvim-treesitter").setup()
+  
+  require("nvim-treesitter").install({
+      "lua",
+      "vim",
+      "vimdoc",
+      "query",
 
-        require("nvim-treesitter").install({
-            "lua",
-            "nix",
-            "vim",
-            "vimdoc",
-            "query",
-            "bash",
-            "python",
-            "javascript",
-            "typescript",
-            "html",
-            "css",
-            "json",
-            "markdown",
-            "markdown_inline",
-        })
-    end,
+      "bash",
+      "nix",
+
+      "c",
+      "cpp",
+      "c_sharp",
+      "rust",
+      "go",
+
+      "python",
+
+      "javascript",
+      "typescript",
+
+      "html",
+      "css",
+      "json",
+
+      "markdown",
+      "markdown_inline",
+  })
+  end,
 }
