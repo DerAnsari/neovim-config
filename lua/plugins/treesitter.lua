@@ -1,31 +1,37 @@
--- ~/.config/nvim/lua/plugins/treesitter.lua
-
 return {
-  'nvim-treesitter/nvim-treesitter',
-  lazy = false,
-  build = ':TSUpdate',
-  config = function()
-    -- 1. Initialize treesitter
-    require('nvim-treesitter').setup({
-      install_dir = vim.fn.stdpath('data') .. '/site'
-    })
+    "nvim-treesitter/nvim-treesitter",
 
-    -- 2. Install parsers
-    require('nvim-treesitter').install({
-      'c', 'cpp', 'glsl', 'lua', 'nix', 
-      'rust', 'go', 'c_sharp', 'python', 'bash', 'markdown', 'markdown_inline'
-    })
+    lazy = false,
+    build = ":TSUpdate",
 
-    -- 3. Enable highlighting for normal file buffers only
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = { '*' },
-      callback = function(args)
-        -- Ignore special UI buffers (like TelescopePrompt, NvimTree, etc.)
-        local buftype = vim.bo[args.buf].buftype
-        if buftype == '' or buftype == 'nofile' then
-          pcall(vim.treesitter.start, args.buf)
-        end
-      end,
-    })
-  end
+    config = function()
+        require("nvim-treesitter").setup()
+
+        require("nvim-treesitter").install({
+            "lua",
+            "vim",
+            "cpp",
+            "nix",
+            "vimdoc",
+            "query",
+            "bash",
+            "python",
+            "javascript",
+            "typescript",
+            "html",
+            "css",
+            "json",
+            "markdown",
+            "markdown_inline",
+        })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                vim.treesitter.start()
+                vim.wo.foldmethod = "expr"
+                vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
+        })
+    end,
 }
