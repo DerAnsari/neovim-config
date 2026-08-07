@@ -16,12 +16,15 @@ return {
       'rust', 'go', 'c_sharp', 'python', 'bash', 'markdown', 'markdown_inline'
     })
 
-    -- 3. Enable highlighting safely across filetypes
+    -- 3. Enable highlighting for normal file buffers only
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { '*' },
-      callback = function()
-        -- pcall silently catches errors if a buffer (like TelescopePrompt) has no parser
-        pcall(vim.treesitter.start)
+      callback = function(args)
+        -- Ignore special UI buffers (like TelescopePrompt, NvimTree, etc.)
+        local buftype = vim.bo[args.buf].buftype
+        if buftype == '' or buftype == 'nofile' then
+          pcall(vim.treesitter.start, args.buf)
+        end
       end,
     })
   end
