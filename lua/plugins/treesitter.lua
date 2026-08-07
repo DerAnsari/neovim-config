@@ -15,7 +15,7 @@ return {
         "lua", 
         "rust",
         "go",
-        "c-sharp",
+        "c_sharp",
         "python",
         "bash",
         "markdown",
