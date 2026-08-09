@@ -12,7 +12,6 @@ return {
         "rust_analyzer",
         "clangd",
         "gopls",
-        "nil_ls",
         "pyright",
         "bashls",
         "yamlls",
