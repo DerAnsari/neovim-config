@@ -8,5 +8,8 @@ return {
 		indent = { enabled = true },
 		words = { enabled = true },
 		bigfile = { enabled = true },
+		input = { enabled = true },
+		scroll = { enabled = true },
+		statuscolumn = { enabled = true },
 	},
 }
