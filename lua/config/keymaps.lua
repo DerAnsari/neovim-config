@@ -15,7 +15,7 @@ vim.keymap.set("n", "<S-l>", ":bnext<cr>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-h>", ":bprevious<cr>", { desc = "Previous buffer" })
 
 -- Window resizing
-vim.keymap.set("n", "<C-Up>", ":resize +2<cr>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", ":resize -2<cr>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<cr>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase window width" })
+vim.keymap.set("n", "<leader>k", ":resize +5<cr>", { desc = "Increase window height" })
+vim.keymap.set("n", "<leader>j", ":resize -5<cr>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<leader>h", ":vertical resize -5<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<leader>l", ":vertical resize +5<cr>", { desc = "Increase window width" })
