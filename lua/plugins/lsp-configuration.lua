@@ -5,7 +5,11 @@ return {
 	},
 	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {},
+		opts = {
+			automatic_enable = {
+				exclude = { "hls" },
+			},
+		},
 		dependencies = {
 			"mason-org/mason.nvim",
 			"neovim/nvim-lspconfig",
@@ -32,6 +36,7 @@ return {
 				"pyright",
 				"bashls",
 				"yamlls",
+				"hls",
 			})
 
 			-- LSP keymaps
